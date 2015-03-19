@@ -26,6 +26,7 @@ public class PlayScreen extends NWScreen {
 		NWUtils.FONT.setColor(Color.GREEN);
 		
 		columnNumber = 8;
+		System.out.println(columnNumber);
 		rowNumber = columnNumber * 2 - 1;
 	}
 
