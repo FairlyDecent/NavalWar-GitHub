@@ -1,12 +1,18 @@
 package nw.game;
 
 import nw.game.screens.LoadingScreen;
+import nw.game.utils.NWUtils;
+import nw.game.utils.interfaces.GooglePlayServices;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.GL20;
 
 public class NavalWar extends Game {
+	
+	public NavalWar(GooglePlayServices googlePlayServices) {
+		NWUtils.gps = googlePlayServices;
+	}
 	
 	public void create () {
 		setScreen(new LoadingScreen());

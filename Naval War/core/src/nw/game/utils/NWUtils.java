@@ -1,6 +1,7 @@
 package nw.game.utils;
 
 import nw.game.screens.NWScreen;
+import nw.game.utils.interfaces.GooglePlayServices;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -8,6 +9,9 @@ import com.badlogic.gdx.assets.AssetManager;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class NWUtils {
+	
+	/** Google Play Services instance */
+	public static GooglePlayServices gps;
 	
 	/** Asset manager for all game assets */
 	public static final AssetManager RESOURCES = new AssetManager();
