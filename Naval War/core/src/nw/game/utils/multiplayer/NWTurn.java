@@ -1,4 +1,4 @@
-package nw.game.android;
+package nw.game.utils.multiplayer;
 
 import java.io.UnsupportedEncodingException;
 import java.nio.charset.Charset;
@@ -6,10 +6,8 @@ import java.nio.charset.Charset;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import android.util.Log;
-
 public class NWTurn {
-
+	
 	public static final String TAG = "NWTurn";
 	
 	/** Turn counter which increments every turn of a match */
@@ -27,14 +25,14 @@ public class NWTurn {
 
         String st = retVal.toString();
 
-        Log.d(TAG, "==== PERSISTING\n" + st);
+        System.out.println(TAG + ": ====PERSISTING\n" + st);
 
         return st.getBytes(Charset.forName("UTF-8"));
 	}
 	
 	public static NWTurn unpersist(byte[] byteArray) {
 		if (byteArray == null) {
-			Log.d(TAG, "Empty array---possible bug.");
+			System.out.println(TAG + ": Empty array---possible bug.");
 			return new NWTurn();
 		}
 		
@@ -46,7 +44,7 @@ public class NWTurn {
 			return null;
 		}
 		
-		Log.d(TAG, "===UNPERSIST \n" + st);
+		System.out.println(TAG + ": ===UNPERSIST \n" + st);
 		
 		NWTurn retVal = new NWTurn();
 		

@@ -18,7 +18,7 @@ public class LoadingScreen extends NWScreen {
 		if (NWUtils.RESOURCES.update()) {
 			uiStage.addAction(Actions.sequence(Actions.fadeOut(1.0f), Actions.run(new Runnable() {
 				public void run() {
-					NWUtils.setScreen(new PlayScreen());
+					NWUtils.setScreen(new MainMenuScreen());
 				}
 			})));
 		}

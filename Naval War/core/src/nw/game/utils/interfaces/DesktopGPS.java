@@ -1,29 +1,28 @@
 package nw.game.utils.interfaces;
 
+import nw.game.utils.multiplayer.NWTurn;
+
+import com.badlogic.gdx.utils.Array;
+
 public class DesktopGPS implements GooglePlayServices {
 
+	private static final String TAG = "DesktopGPS";
+	
 	public void signIn() {
-		System.out.println("signIn()");
+		System.out.println(TAG + ": signIn()");
 	}
 
 	public void signOut() {
-		System.out.println("signOut()");
-	}
-
-	public void unlockAchievement(int achievementId) {
-		System.out.println("unlockAchievement(" + achievementId + ")");
+		System.out.println(TAG + ": signOut()");
 	}
 
 	public boolean isSignedIn() {
-		System.out.println("isSignedIn()");
+		System.out.println(TAG + ": isSignedIn()");
 		return false;
 	}
-
-	public void onQuickMatchStarted() {
-		System.out.println("onQuickMatchStarted()");
-	}
-
-	public void onNormalMatchStarted() {
-		System.out.println("onNormalMatchStarted()");
+	
+	public Array<NWTurn> getActiveGames() {
+		System.out.println(TAG + ": getActiveGames()");
+		return null;
 	}
 }

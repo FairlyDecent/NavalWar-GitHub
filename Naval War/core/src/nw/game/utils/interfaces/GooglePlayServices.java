@@ -1,5 +1,9 @@
 package nw.game.utils.interfaces;
 
+import nw.game.utils.multiplayer.NWTurn;
+
+import com.badlogic.gdx.utils.Array;
+
 public interface GooglePlayServices {
 
 	/** Sign in to Google Play Services */
@@ -9,11 +13,6 @@ public interface GooglePlayServices {
 	/** Returns true if the player has signed in to Google Play Services */
 	public boolean isSignedIn();
 	
-	/** Called when the user starts a quick match */
-	public void onQuickMatchStarted();
-	/** Called when the user starts a normal match */
-	public void onNormalMatchStarted();
-	
-	/** Unlocks the specified achievement for the signed in player */
-	public void unlockAchievement(int achievementId);
+	/** Returns an array containing all the active games of the connected player */
+	public Array<NWTurn> getActiveGames();
 }
