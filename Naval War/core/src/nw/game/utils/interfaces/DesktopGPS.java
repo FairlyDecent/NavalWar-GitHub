@@ -13,4 +13,9 @@ public class DesktopGPS implements GooglePlayServices {
 	public void unlockAchievement(int achievementId) {
 		System.out.println("unlockAchievement(" + achievementId + ")");
 	}
+
+	public boolean isSignedIn() {
+		System.out.println("isSignedIn()");
+		return false;
+	}
 }
