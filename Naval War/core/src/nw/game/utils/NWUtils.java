@@ -6,7 +6,6 @@ import nw.game.utils.interfaces.GooglePlayServices;
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.assets.AssetManager;
-import com.badlogic.gdx.graphics.g2d.BitmapFont;
 
 public class NWUtils {
 	
@@ -15,9 +14,6 @@ public class NWUtils {
 	
 	/** Asset manager for all game assets */
 	public static final AssetManager RESOURCES = new AssetManager();
-	
-	/** Bitmap font instance used for test purposes */
-	public static final BitmapFont FONT = new BitmapFont();
 	
 	/** Sets the screen while keeping the same UI stage */
 	public static void setScreenWithUiStage(NWScreen nextScreen) {

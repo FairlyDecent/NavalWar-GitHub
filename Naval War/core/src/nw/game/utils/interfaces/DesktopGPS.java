@@ -18,4 +18,12 @@ public class DesktopGPS implements GooglePlayServices {
 		System.out.println("isSignedIn()");
 		return false;
 	}
+
+	public void onQuickMatchStarted() {
+		System.out.println("onQuickMatchStarted()");
+	}
+
+	public void onNormalMatchStarted() {
+		System.out.println("onNormalMatchStarted()");
+	}
 }
