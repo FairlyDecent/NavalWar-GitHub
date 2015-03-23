@@ -11,6 +11,7 @@ import com.badlogic.gdx.graphics.GL20;
 public class NavalWar extends Game {
 	
 	public NavalWar(GooglePlayServices googlePlayServices) {
+		super();
 		NWUtils.gps = googlePlayServices;
 	}
 	

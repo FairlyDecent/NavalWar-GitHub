@@ -19,6 +19,7 @@ public class NWUtils {
 	/** Bitmap font instance used for test purposes */
 	public static final BitmapFont FONT = new BitmapFont();
 	
+	/** Sets the screen while keeping the same UI stage */
 	public static void setScreenWithUiStage(NWScreen nextScreen) {
 		NWScreen currentScreen = (NWScreen) ((Game) Gdx.app.getApplicationListener()).getScreen();
 		nextScreen.setUiStage(currentScreen.getUiStage());
@@ -26,6 +27,7 @@ public class NWUtils {
 		currentScreen.dispose();
 	}
 	
+	/** Sets the screen */
 	public static void setScreen(NWScreen nextScreen) {
 		NWScreen currentScreen = (NWScreen) ((Game) Gdx.app.getApplicationListener()).getScreen();
 		((Game) Gdx.app.getApplicationListener()).setScreen(nextScreen);
