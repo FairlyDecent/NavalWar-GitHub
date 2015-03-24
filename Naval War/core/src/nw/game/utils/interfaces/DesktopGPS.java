@@ -28,10 +28,18 @@ public class DesktopGPS implements GooglePlayServices {
 	
 	public Array<NWTurn> getActiveGames() {
 		System.out.println(TAG + ": getActiveGames()");
-		return null;
+		return new Array<NWTurn>();
 	}
 
 	public void createQuickMatch() {
 		System.out.println(TAG + ": startQuickMatch()");
+	}
+
+	public void endTurn() {
+		System.out.println(TAG + ": endTurn()");
+	}
+
+	public void checkInbox() {
+		System.out.println(TAG + ": checkInbox()");
 	}
 }

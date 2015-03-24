@@ -16,9 +16,14 @@ public interface GooglePlayServices {
 	/** Starts a game w/ automatic match making */
 	public void createQuickMatch();
 	
+	/** Ends the current turn */
+	public void endTurn();
+	
 	/** Returns the active game turn */
 	public NWTurn getActiveGameTurn();
 	
+	/** Check your inbox */
+	public void checkInbox();
 	/** Returns an array containing all the active games of the connected player */
 	public Array<NWTurn> getActiveGames();
 }

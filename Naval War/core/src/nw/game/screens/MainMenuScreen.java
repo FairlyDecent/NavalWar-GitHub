@@ -24,13 +24,15 @@ public class MainMenuScreen extends NWScreen {
 		style.font.setScale(2);
 		style.fontColor = Color.BLUE;
 		
-		start = new TextButton("START", style);
+		start = new TextButton("Quick Game", style);
 		start.setPosition(NWConfig.WIDTH / 2, NWConfig.HEIGHT / 2, Align.center);
 		start.addListener(new ClickListener() {
 			public void clicked (InputEvent event, float x, float y) {
 				if (NWMpUtils.gps != null) {
-					NWMpUtils.gps.createQuickMatch();
-					NWUtils.setScreen(new PlayScreen());
+					if (NWMpUtils.gps.isSignedIn()) {
+						NWMpUtils.gps.createQuickMatch();
+						NWUtils.setScreen(new PlayScreen());
+					}
 				}
 			}
 		});
