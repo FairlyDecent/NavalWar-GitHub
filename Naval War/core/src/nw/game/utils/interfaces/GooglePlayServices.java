@@ -13,6 +13,12 @@ public interface GooglePlayServices {
 	/** Returns true if the player has signed in to Google Play Services */
 	public boolean isSignedIn();
 	
+	/** Starts a game w/ automatic match making */
+	public void createQuickMatch();
+	
+	/** Returns the active game turn */
+	public NWTurn getActiveGameTurn();
+	
 	/** Returns an array containing all the active games of the connected player */
 	public Array<NWTurn> getActiveGames();
 }

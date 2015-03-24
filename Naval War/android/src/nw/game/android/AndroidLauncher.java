@@ -12,7 +12,9 @@ import com.badlogic.gdx.backends.android.AndroidApplicationConfiguration;
 import com.badlogic.gdx.utils.Array;
 import com.google.android.gms.common.api.ResultCallback;
 import com.google.android.gms.games.Games;
+import com.google.android.gms.games.multiplayer.realtime.RoomConfig;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatch;
+import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMatchConfig;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer;
 import com.google.android.gms.games.multiplayer.turnbased.TurnBasedMultiplayer.LoadMatchesResult;
 import com.google.example.games.basegameutils.GameHelper;
@@ -28,8 +30,8 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
 	/** Current match data */
 	private NWTurn turnData;
 	
-	/** Current turn-based match we're in! Null if not loaded */
-	private TurnBasedMatch currentMatch;
+	/** Current match */
+	private TurnBasedMatch match;
 	
 	protected void onCreate (Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -88,6 +90,48 @@ public class AndroidLauncher extends AndroidApplication implements GooglePlaySer
 
 	public boolean isSignedIn() {
 		return gameHelper.isSignedIn();
+	}
+	
+	public void createQuickMatch() {
+		Bundle autoMatchCriteria = RoomConfig.createAutoMatchCriteria(1, 1, 0);
+        TurnBasedMatchConfig tbmc = TurnBasedMatchConfig.builder().setAutoMatchCriteria(autoMatchCriteria).build();
+
+        // Start the match
+        ResultCallback<TurnBasedMultiplayer.InitiateMatchResult> cb = new ResultCallback<TurnBasedMultiplayer.InitiateMatchResult>() {
+            public void onResult(TurnBasedMultiplayer.InitiateMatchResult result) {
+            	TurnBasedMatch mMatch = result.getMatch();
+
+                if (match.getData() != null) {
+                    // This is a game that has already started, so I'll just start
+                	//updateMatch(match);
+                    return;
+                }
+                
+                turnData = new NWTurn();
+                match = mMatch;
+
+                String playerId = Games.Players.getCurrentPlayerId(gameHelper.getApiClient());
+                String myParticipantId = match.getParticipantId(playerId);
+
+                Games.TurnBasedMultiplayer.takeTurn(gameHelper.getApiClient(), match.getMatchId(), turnData.persist(), myParticipantId).setResultCallback(
+                        new ResultCallback<TurnBasedMultiplayer.UpdateMatchResult>() {
+                            public void onResult(TurnBasedMultiplayer.UpdateMatchResult result) {
+                            	TurnBasedMatch mMatch = result.getMatch();
+
+                                if (mMatch.getTurnStatus() == TurnBasedMatch.MATCH_TURN_STATUS_MY_TURN) {
+                                	//updateMatch(mMatch);
+                                    return;
+                                }
+                            }
+                        });
+            }
+        };
+        
+        Games.TurnBasedMultiplayer.createMatch(gameHelper.getApiClient(), tbmc).setResultCallback(cb);
+	}
+	
+	public NWTurn getActiveGameTurn() {
+		return (turnData != null) ? turnData : new NWTurn();
 	}
 	
 	public Array<NWTurn> getActiveGames() {

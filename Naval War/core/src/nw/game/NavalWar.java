@@ -1,8 +1,8 @@
 package nw.game;
 
 import nw.game.screens.LoadingScreen;
-import nw.game.utils.NWUtils;
 import nw.game.utils.interfaces.GooglePlayServices;
+import nw.game.utils.multiplayer.NWMpUtils;
 
 import com.badlogic.gdx.Game;
 import com.badlogic.gdx.Gdx;
@@ -12,7 +12,7 @@ public class NavalWar extends Game {
 	
 	public NavalWar(GooglePlayServices googlePlayServices) {
 		super();
-		NWUtils.gps = googlePlayServices;
+		NWMpUtils.gps = googlePlayServices;
 	}
 	
 	public void create () {

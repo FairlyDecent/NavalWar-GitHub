@@ -11,7 +11,7 @@ public class NWTurn {
 	public static final String TAG = "NWTurn";
 	
 	/** Turn counter which increments every turn of a match */
-	public int turnCounter;
+	public int turnCounter = 0;
 	
 	public byte[] persist() {
 		JSONObject retVal = new JSONObject();

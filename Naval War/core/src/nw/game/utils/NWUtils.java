@@ -9,9 +9,6 @@ import com.badlogic.gdx.assets.AssetManager;
 
 public class NWUtils {
 	
-	/** Google Play Services instance */
-	public static GooglePlayServices gps;
-	
 	/** Asset manager for all game assets */
 	public static final AssetManager RESOURCES = new AssetManager();
 	
